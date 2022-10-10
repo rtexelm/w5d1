@@ -4,11 +4,17 @@ end
 
 class Array
   def hash
+    sum = 0
+    self.each_with_index do |num, i|
+      sum += (num + i).hash
+    end
+    sum.hash
   end
 end
 
 class String
   def hash
+    
   end
 end
 
