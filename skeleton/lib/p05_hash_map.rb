@@ -8,13 +8,36 @@ class HashMap
     @count = 0
   end
 
+  # def [](key)
+  #   hash = key.hash
+  #   index = hash % num_buckets
+  #   @store[index].get(key)
+  # end
+
+  # def []=(key, val)
+  #   if include?(key)
+  #     self[key].update(key, val)
+  #   else
+  #     self[key].append(key, val)
+  #   end
+  # end
+
   def include?(key)
+    self[key].include?(key)
   end
 
   def set(key, val)
+    if include?(key)
+      self[key].update(key, val)
+    else
+      self[key].append(key, val)
+    end
   end
 
   def get(key)
+    hash = key.hash
+    index = hash % num_buckets
+    @store[index].get(key)
   end
 
   def delete(key)
